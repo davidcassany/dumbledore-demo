@@ -37,5 +37,4 @@ virt-install \
   --network network=default,mac=FE:C4:05:42:8B:05 \
   --graphics spice,listen=0.0.0.0 \
   --video qxl \
-  --channel spicevmc \
-  --noautoconsole
+  --channel spicevmc
