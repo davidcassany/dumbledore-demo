@@ -1,0 +1,7 @@
+name: dumbledore
+manifestURI: file://dumbledore-manifest.yaml
+components:
+  kubernetes: {}  # Enable Kubernetes installation from core release
+  helm:
+    - chart: metallb # from core release
+

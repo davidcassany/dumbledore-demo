@@ -1,0 +1,8 @@
+schema: v0
+bootloader: grub
+kernelCmdLine: "console=ttyS0"
+raw:
+  diskSize: 6G
+# Alternatively if type of media specified is ISO
+# iso:
+#   device: "/dev/sda"

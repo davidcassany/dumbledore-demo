@@ -1,0 +1,8 @@
+# This configuration represents a fictional openSUSE project and is meant for example purposes only.
+metadata:
+  name: "dumbledore"
+  version: "1.0.0"
+  creationDate: "2026-04-16"
+corePlatform:
+  # Release manifest OCI image of the Core Platform that release extends
+  image: "registry.opensuse.org/home/dcassany/elemental/demo/containers/release-manifest:latest"
