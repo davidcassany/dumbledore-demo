@@ -1,6 +1,6 @@
 schema: v0
 bootloader: grub
-kernelCmdLine: "console=ttyS0"
+kernelCmdLine: "console=ttyS0 security=selinux selinux=1"
 raw:
   diskSize: 6G
 # Alternatively if type of media specified is ISO
