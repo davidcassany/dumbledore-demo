@@ -2,8 +2,11 @@
 
 set -xe
 
+: ${DOCKER_HOST:=unix:///run/user/1000/podman/podman.sock}
+
 path=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
-image=registry.opensuse.org/home/dcassany/elemental/demo/containers/elemental3:latest
+#image=registry.opensuse.org/home/dcassany/elemental/demo/containers/elemental3:latest
+image=registry.suse.com/elemental/elemental:3.0
 imagefile=singlenode-image
 vm=singlenode-dumbledore
 
@@ -14,8 +17,8 @@ virsh undefine "${vm}" --nvram || true
 
 rm -rv "${path}/${imagefile}".* || true
 
-podman run --rm -it -v "${path}:/host" -v "${DOCKER_HOST##unix://}:/var/run/docker.sock" "${image}" \
-  --debug customize \
+podman run --rm -it --security-opt label=disable -v "${path}:/host" -v "${DOCKER_HOST##unix://}:/var/run/docker.sock" "${image}" \
+  customize \
   --config-dir /host/single_node \
   --type raw \
   --local \
@@ -37,4 +40,5 @@ virt-install \
   --network network=default,mac=FE:C4:05:42:8B:05 \
   --graphics spice,listen=0.0.0.0 \
   --video qxl \
-  --channel spicevmc
+  --channel spicevmc \
+  --noautoconsole
